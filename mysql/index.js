@@ -5,7 +5,7 @@ console.log(mysql)
 var connectionObject = mysql.createConnection({
     host:'localhost',
     user: 'root',
-    password:'password',
+    password:'root',
     port: 3306,
     database: 'nov01friend'
    
