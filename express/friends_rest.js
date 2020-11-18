@@ -24,7 +24,7 @@ connectionObject.connect((err)=>{
 })    
 
 var app = express()
-app.use(bodyparser.json())
+//app.use(bodyparser.json())
 
 app.get('/ver_1.0/friends/all', (req, res)=>{
     //reuse the connection object to execute query
@@ -36,6 +36,22 @@ app.get('/ver_1.0/friends/all', (req, res)=>{
          console.log(success)
          res.json(success)
     })
+
+
+})
+
+app.get('/ver_1.0/friends/:myid', (req, res)=>{
+    //reuse the connection object to execute query
+    console.log(req.params)
+    console.log(req.params.myid)
+    var queryGetFriendById = "select * from friends where id = " + req.params.myid
+    connectionObject.query(queryGetFriendById,(error, success)=>{
+        if(error)
+            throw error
+
+         console.log(success)
+         res.json(success)
+    }) 
 
 
 })
