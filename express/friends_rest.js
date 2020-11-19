@@ -73,6 +73,75 @@ app.post("/ver_1.0/friends/add", (req, res)=>{
 })
 
 
+app.delete("/ver_1.0/friends/del/:myid", (req, res)=>{
+    var deleteid = req.params.myid
+    var sqldelete = "delete from friends where id=" + deleteid
+    connectionObject.query(sqldelete, (error, success)=>{
+        if(error)
+            throw error
+
+        console.log(success)
+        if(success.affectedRows === 1){
+            res.send("One row deleted with id - " + deleteid)
+        }
+        if(success.affectedRows === 0){
+            res.send("Invalid id - " + deleteid)
+        }
+
+    }) 
+
+})
+
+app.put("/ver_1.0/friends/update/:myid", (req, res)=>{
+    var updateId = req.params.myid
+    var name = req.body.name
+    var location = req.body.location
+    var sqlupdate = "update friends set name='"+ name +  
+                    "', location= '" + location +  
+                    "' where id = " + updateId
+    console.log(sqlupdate)
+    connectionObject.query(sqlupdate, (error, success)=>{
+        if(error)
+            throw error
+
+        console.log(success)
+        if(success.affectedRows === 1){
+            res.send("One row updated with id - " + updateId)
+        }
+        if(success.affectedRows === 0){
+            res.send("Invalid id - " + updateId)
+        }
+
+    }) 
+
+
+})
+
+
+app.patch("/ver_1.0/friends/patch/location/:myid", (req, res)=>{
+    var updateId = req.params.myid
+    var location = req.body.location
+    var sqlupdate = "update friends set location= '" + location +  
+                    "' where id = " + updateId
+    console.log(sqlupdate)
+    connectionObject.query(sqlupdate, (error, success)=>{
+        if(error)
+            throw error
+
+        console.log(success)
+        if(success.affectedRows === 1){
+            res.send("One row updated with id - " + updateId)
+        }
+        if(success.affectedRows === 0){
+            res.send("Invalid id - " + updateId)
+        }
+
+    }) 
+
+
+})
+
+
 app.listen(1234, ()=>{
     console.log("Listening on port 1234")
 })
