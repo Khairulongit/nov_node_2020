@@ -1,0 +1,15 @@
+Pl. finish the activity of yesterday!
+
+Assignment 01:
+
+https://s3.amazonaws.com/daveceddia.com/Pure+React+-+sample+chapters.pdf
+
+1. Go to page 10
+2. Implement the tables and db schema for mysql server for tweet.
+3. Implement REST endpoints for:
+3.1 Adding a new tweet for particular username (handlename)
+3.2 Get list of all tweets by username (handlename)
+3.3 Increase the count of like by 1 for any particular username (handlename)
+3.4 Updating the tweet (by id) for any particular username (handlename)
+3.5 Get list of all tweets of all users
+
